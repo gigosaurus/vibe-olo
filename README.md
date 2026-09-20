@@ -235,13 +235,15 @@ default branch, and can also be run manually from any branch via **Actions →
 Deploy to GitHub Pages → Run workflow**. It runs lint, formatting, tests and
 the type-checked build first, so a broken commit is never published.
 
-One-time setup: **Settings → Pages → Build and deployment → Source:
-GitHub Actions**.
+No manual setup is needed: the workflow passes `enablement: true` to
+`actions/configure-pages`, which switches Pages on with GitHub Actions as the
+source the first time it runs. To do it by hand instead, use **Settings → Pages
+→ Build and deployment → Source: GitHub Actions**.
 
-> **Note:** GitHub Pages on a _private_ repository requires a paid GitHub plan
-> (Pro, Team or Enterprise). On a free account, either make the repository
-> public or use one of the hosts below, which deploy private repositories on
-> their free tiers.
+> **Note:** GitHub Pages is free for public repositories. On a _private_
+> repository it requires a paid GitHub plan (Pro, Team or Enterprise), and the
+> published site is reachable by anyone with the URL regardless. The hosts
+> below deploy private repositories on their free tiers.
 
 The site is published at `https://<owner>.github.io/<repo>/`.
 
