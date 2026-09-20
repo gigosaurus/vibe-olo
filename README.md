@@ -209,21 +209,60 @@ against every card.
 
 ## Deploying to static hosting
 
-The build is a folder of static files with no server requirements:
+The build is a folder of static files with no server requirements, so any
+static host works:
 
 ```bash
 npm run build
 # upload the contents of dist/
 ```
 
-It works on GitHub Pages, Netlify, Cloudflare Pages, S3 or any static host.
-Two things matter:
+Two things matter wherever it lands:
 
-- **HTTPS is required** for the service worker (`localhost` is exempt).
+- **HTTPS is required** for the service worker (`localhost` is exempt). Without
+  it the app still runs, but it cannot be installed and will not work offline.
 - The build uses relative URLs (`base: './'`), so it works from a subdirectory
-  such as `https://example.com/party-deck/` without changes.
+  such as `https://example.com/party-deck/` as well as from a domain root. No
+  configuration change is needed either way.
 
-For hosts that rewrite unknown paths, point the SPA fallback at `index.html`.
+There is no client-side routing, so no SPA rewrite rule is needed. If your host
+asks for one anyway, point the fallback at `index.html`.
+
+### GitHub Pages
+
+`.github/workflows/deploy.yml` builds and publishes on every push to the
+default branch, and can also be run manually from any branch via **Actions →
+Deploy to GitHub Pages → Run workflow**. It runs lint, formatting, tests and
+the type-checked build first, so a broken commit is never published.
+
+One-time setup: **Settings → Pages → Build and deployment → Source:
+GitHub Actions**.
+
+> **Note:** GitHub Pages on a _private_ repository requires a paid GitHub plan
+> (Pro, Team or Enterprise). On a free account, either make the repository
+> public or use one of the hosts below, which deploy private repositories on
+> their free tiers.
+
+The site is published at `https://<owner>.github.io/<repo>/`.
+
+### Cloudflare Pages, Netlify or Vercel
+
+Connect the repository and use:
+
+| Setting          | Value           |
+| ---------------- | --------------- |
+| Build command    | `npm run build` |
+| Output directory | `dist`          |
+| Node version     | 22              |
+
+No other configuration is needed, and all three serve the site from a domain
+root over HTTPS.
+
+### Anything else
+
+`dist/` can be copied straight to S3 + CloudFront, nginx, Caddy, or a USB stick
+and opened through any static file server. The only requirement is HTTPS for
+the installable and offline behaviour.
 
 ## Known MVP limitations
 
