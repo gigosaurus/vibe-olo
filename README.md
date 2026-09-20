@@ -235,10 +235,11 @@ default branch, and can also be run manually from any branch via **Actions →
 Deploy to GitHub Pages → Run workflow**. It runs lint, formatting, tests and
 the type-checked build first, so a broken commit is never published.
 
-No manual setup is needed: the workflow passes `enablement: true` to
-`actions/configure-pages`, which switches Pages on with GitHub Actions as the
-source the first time it runs. To do it by hand instead, use **Settings → Pages
-→ Build and deployment → Source: GitHub Actions**.
+One-time setup, once per repository: **Settings → Pages → Build and deployment
+→ Source: GitHub Actions**. Until that is done, the build succeeds and the
+deploy step fails with `Get Pages site failed ... Not Found`. The workflow
+cannot do this for you — creating a Pages site needs repository admin rights,
+which the workflow's `GITHUB_TOKEN` does not have.
 
 > **Note:** GitHub Pages is free for public repositories. On a _private_
 > repository it requires a paid GitHub plan (Pro, Team or Enterprise), and the
