@@ -1,0 +1,79 @@
+/*
+ * Design tokens. Every colour, space and type step in the app comes from here,
+ * so the whole look can be retuned in one place.
+ */
+:root {
+  color-scheme: dark;
+
+  /* Palette: deep indigo night, warm coral, electric lime. */
+  --colour-bg: #12102a;
+  --colour-bg-raised: #1c1940;
+  --colour-bg-sunken: #0d0b1f;
+  --colour-surface: #241f52;
+  --colour-border: #3a3370;
+  --colour-text: #f4f1ff;
+  --colour-text-muted: #c8c2e8;
+  --colour-accent: #ff6b6b;
+  --colour-accent-strong: #ff8a5c;
+  --colour-accent-contrast: #12102a;
+  --colour-highlight: #c6f74f;
+  --colour-danger: #ff8fa3;
+  --colour-focus: #c6f74f;
+
+  /* Per-category card tints, used together with a text label — never alone. */
+  --colour-card-icebreakers: #5ad2f4;
+  --colour-card-questions: #c6a2ff;
+  --colour-card-votes: #ffd166;
+  --colour-card-challenges: #ff6b6b;
+  --colour-card-rules: #c6f74f;
+
+  /* Spacing scale. */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  /* Typography. System fonts only: nothing is fetched at runtime. */
+  --font-body: system-ui, -apple-system, 'Segoe UI', roboto, 'Helvetica Neue', arial, sans-serif;
+  --font-display: var(--font-body);
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-md: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: clamp(1.5rem, 4.5vw, 2rem);
+  --text-card: clamp(1.5rem, 6.2vw, 2.5rem);
+  --leading-tight: 1.2;
+  --leading-normal: 1.55;
+
+  /* Shape and depth. */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.5rem;
+  --radius-pill: 999px;
+  --shadow-card: 0 18px 40px rgb(0 0 0 / 45%);
+  --shadow-raised: 0 6px 18px rgb(0 0 0 / 35%);
+
+  /* Interaction. */
+  --tap-target: 2.75rem; /* 44px */
+  --transition-fast: 120ms ease-out;
+  --transition-base: 200ms ease-out;
+  --focus-ring: 3px solid var(--colour-focus);
+  --focus-offset: 2px;
+
+  /* Layout. */
+  --content-max: 34rem;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 1ms linear;
+    --transition-base: 1ms linear;
+  }
+}

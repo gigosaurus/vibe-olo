@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Party Deck">
+  <rect width="64" height="64" rx="14" fill="#12102a"/>
+  <path d="M29 16 L45 32 L29 48 L13 32 Z" fill="#ff6b6b"/>
+  <path d="M44 14 L54 25 L44 36 L34 25 Z" fill="#c6f74f" stroke="#12102a" stroke-width="3"/>
+</svg>
